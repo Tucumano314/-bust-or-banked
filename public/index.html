@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bust or Banked</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <div id="joinScreen" class="screen active">
+      <div class="container">
+        <h1>Bust or Banked</h1>
+        <p class="subtitle">Real-time multiplayer dice game</p>
+
+        <div class="form-group">
+          <input type="text" id="playerName" placeholder="Enter your name" maxlength="20">
+        </div>
+
+        <button id="createRoomBtn" class="btn btn-primary">Create Room</button>
+
+        <div class="divider">OR</div>
+
+        <div class="form-group">
+          <input type="text" id="roomCode" placeholder="Enter room code (4 letters)" maxlength="4">
+        </div>
+
+        <button id="joinRoomBtn" class="btn btn-secondary">Join Room</button>
+
+        <div id="errorMessage" class="error-message"></div>
+      </div>
+    </div>
+
+    <div id="gameScreen" class="screen">
+      <div class="container">
+        <div class="header-bar">
+          <div class="room-info">
+            <span class="room-label">Room:</span>
+            <span id="roomCodeDisplay" class="room-code"></span>
+          </div>
+          <div class="round-info">
+            <span class="round-label">Round:</span>
+            <span id="roundDisplay" class="round-number">1</span>
+          </div>
+        </div>
+
+        <div class="pot-section">
+          <div class="pot-label">POT</div>
+          <div id="potDisplay" class="pot-value">0</div>
+        </div>
+
+        <div class="dice-section">
+          <div id="diceContainer" class="dice-container" style="display: none;">
+            <img id="dice1" class="dice-img" src="https://i.imgur.com/Z8qGC4w.gif" alt="Rolling dice">
+            <img id="dice2" class="dice-img" src="https://i.imgur.com/Z8qGC4w.gif" alt="Rolling dice">
+          </div>
+          <div id="lastRollDisplay" class="dice-display">
+            <div class="dice-placeholder">Roll to start!</div>
+          </div>
+        </div>
+
+        <div class="current-turn">
+          <span id="currentPlayerDisplay" class="current-player-name"></span>
+        </div>
+
+        <div class="controls">
+          <button id="startGameBtn" class="btn btn-start" style="display: none;">Start Game</button>
+          <button id="rollBtn" class="btn btn-roll" disabled>ROLL</button>
+          <button id="bankBtn" class="btn btn-bank" disabled>BANK NOW</button>
+          <button id="restartBtn" class="btn btn-restart" style="display: none;">RESTART GAME</button>
+        </div>
+
+        <div class="players-section">
+          <h3>Players</h3>
+          <div id="playersList" class="players-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="bustNotification" class="bust-notification">
+    <div class="bust-content">BUST!</div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
